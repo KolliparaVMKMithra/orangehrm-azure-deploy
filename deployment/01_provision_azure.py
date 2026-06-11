@@ -143,20 +143,48 @@ def main():
         "Creating network interface card"
     )
 
-    # 8. Create Virtual Machine
-    run(
-        f"az vm create "
-        f"--resource-group {c['resource_group']} "
-        f"--name {c['vm_name']} "
-        f"--nics {c['nic_name']} "
-        f"--image {c['image']} "
-        f"--size {c['vm_size']} "
-        f"--admin-username {c['admin_username']} "
-        f"--ssh-key-values {c['ssh_key_path']} "
-        f"--os-disk-size-gb {c['os_disk_size']} "
-        f"--no-wait",
-        f"Creating VM '{c['vm_name']}' (this takes ~3 minutes)..."
-    )
+    # 8. Create Virtual Machine (with automated fallback for VM sizes due to capacity restrictions)
+    sizes_to_try = [
+        c['vm_size'],  # Start with configured size (e.g. Standard_B2s)
+        "Standard_B2ms",
+        "Standard_DS1_v2",
+        "Standard_D2s_v3",
+        "Standard_D2s_v5"
+    ]
+    # Deduplicate while preserving order
+    seen = set()
+    sizes_to_try = [x for x in sizes_to_try if not (x in seen or seen.add(x))]
+
+    vm_created = False
+    for size in sizes_to_try:
+        print(f"\n⏳  Attempting to create VM '{c['vm_name']}' with size '{size}'...")
+        cmd = (
+            f"az vm create "
+            f"--resource-group {c['resource_group']} "
+            f"--name {c['vm_name']} "
+            f"--nics {c['nic_name']} "
+            f"--image {c['image']} "
+            f"--size {size} "
+            f"--admin-username {c['admin_username']} "
+            f"--ssh-key-values {c['ssh_key_path']} "
+            f"--os-disk-size-gb {c['os_disk_size']} "
+            f"--no-wait"
+        )
+        # We capture output to check for SkuNotAvailable or other errors if it fails
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        if result.returncode == 0:
+            print(f"✅  VM creation initiated successfully with size '{size}'!")
+            c['vm_size'] = size
+            vm_created = True
+            break
+        else:
+            print(f"❌  Size '{size}' failed. Error:")
+            print(result.stderr.strip())
+            print("Trying the next available size...")
+
+    if not vm_created:
+        print("\n❌  All VM size options failed. Please check Azure capacity or try another location.")
+        sys.exit(1)
 
     # 9. Wait for VM to be ready
     print("\n⏳  Waiting for VM to be fully provisioned (up to 5 minutes)...")
