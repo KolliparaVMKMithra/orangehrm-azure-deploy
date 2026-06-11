@@ -32,10 +32,10 @@ if hasattr(sys.stderr, 'reconfigure'):
 # CONFIGURATION — Edit these values
 # ─────────────────────────────────────────────
 CONFIG = {
-    "resource_group":   "orangehrm-rg",
-    "location":         "eastus",            # Change to your preferred region
+    "resource_group":   "orangehrm-europe-rg",
+    "location":         "westeurope",            # Change to your preferred region
     "vm_name":          "orangehrm-vm",
-    "vm_size":          "Standard_B1s",      # 1 vCPU, 1GB RAM — good for small HR teams
+    "vm_size":          "Standard_B2s",      # 2 vCPU, 4GB RAM — good for small HR teams
     "admin_username":   "azureuser",
     "ssh_key_path":     "~/.ssh/id_rsa.pub", # Your SSH public key path
     "vnet_name":        "orangehrm-vnet",
