@@ -32,8 +32,8 @@ if hasattr(sys.stderr, 'reconfigure'):
 # CONFIGURATION — Edit these values
 # ─────────────────────────────────────────────
 CONFIG = {
-    "resource_group":   "orangehrm-uk-rg",
-    "location":         "uksouth",            # Change to your preferred region
+    "resource_group":   "orangehrm-rg",
+    "location":         "eastus",            # Change to your preferred region
     "vm_name":          "orangehrm-vm",
     "vm_size":          "Standard_B2s",      # 2 vCPU, 4GB RAM — good for small HR teams
     "admin_username":   "azureuser",
