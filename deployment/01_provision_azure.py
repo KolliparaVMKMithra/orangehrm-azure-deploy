@@ -146,10 +146,17 @@ def main():
     # 8. Create Virtual Machine (with automated fallback for VM sizes due to capacity restrictions)
     sizes_to_try = [
         c['vm_size'],  # Start with configured size (e.g. Standard_B2s)
+        "Standard_B2s_v2",
+        "Standard_B2as_v2",
         "Standard_B2ms",
-        "Standard_DS1_v2",
+        "Standard_B1ms",
+        "Standard_B1s",
+        "Standard_B4ms",
+        "Standard_F2s_v2",
+        "Standard_F2s",
         "Standard_D2s_v3",
-        "Standard_D2s_v5"
+        "Standard_D2s_v5",
+        "Standard_DS1_v2"
     ]
     # Deduplicate while preserving order
     seen = set()
