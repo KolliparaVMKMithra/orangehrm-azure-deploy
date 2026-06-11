@@ -1,0 +1,235 @@
+# OrangeHRM Azure Deployment .gitignore
+
+# ============================================================================
+# SENSITIVE FILES - NEVER COMMIT
+# ============================================================================
+
+# Environment variables with secrets
+.env
+.env.local
+.env.*.local
+.env.production
+
+# ============================================================================
+# BUILD AND DEPLOYMENT FILES
+# ============================================================================
+
+# Build output
+build-output/
+*.zip
+dist/
+
+# Dependencies
+venv/
+env/
+ENV/
+.venv
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+virtualenv/
+.virtualenvs/
+
+# ============================================================================
+# IDE AND EDITOR FILES
+# ============================================================================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================================
+# LOG FILES
+# ============================================================================
+
+logs/
+*.log
+deployment.log
+error.log
+
+# ============================================================================
+# TEMPORARY FILES
+# ============================================================================
+
+*.tmp
+*.temp
+temp/
+tmp/
+.cache/
+
+# ============================================================================
+# OS SPECIFIC
+# ============================================================================
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.bak
+
+# ============================================================================
+# PUBLISH PROFILES
+# ============================================================================
+
+*.publishsettings
+*.pubxml
+*.pubxml.user
+
+# ============================================================================
+# NPM AND NODE
+# ============================================================================
+
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json (optional)
+yarn.lock (optional)
+
+# ============================================================================
+# PYTHON SPECIFIC
+# ============================================================================
+
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ============================================================================
+# CREDENTIALS AND KEYS
+# ============================================================================
+
+# SSH Keys
+*.pem
+*.pub
+id_rsa
+id_rsa.pub
+
+# API Keys and Tokens
+.aws/
+.azure/
+credentials.json
+config.json
+
+# ============================================================================
+# APPLICATION BUILD FILES
+# ============================================================================
+
+# From application root, if running from there
+src/vendor/
+src/node_modules/
+src/.env
+src/.env.local
+web/dist/
+installer/client/dist/
+installer/client/node_modules/
+
+# ============================================================================
+# DATABASE FILES
+# ============================================================================
+
+*.db
+*.sqlite
+*.sqlite3
+*.sql
+
+# ============================================================================
+# SYSTEM FILES
+# ============================================================================
+
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ============================================================================
+# DEPLOYMENT ARTIFACTS
+# ============================================================================
+
+*.war
+*.ear
+*.rar
+
+# ============================================================================
+# OFFICE DOCUMENTS
+# ============================================================================
+
+*.docx
+*.xlsx
+*.pptx
+.~*
+
+# ============================================================================
+# VISUAL STUDIO AND RIDER
+# ============================================================================
+
+.vs/
+.vscode/
+.rider/
+ReSharper.Cache
+.localhistory/
+.history
+
+# ============================================================================
+# NODE RED FLOWS
+# ============================================================================
+
+flows.json
+flows_creds.json
+
+# ============================================================================
+# NOTES
+# ============================================================================
+
+# Uncomment the following if you have notes/documentation you don't want
+# to commit (optional)
+# NOTES.md
+# notes/
+# TODO.md
+
+# ============================================================================
+# GENERATED FILES - DO NOT COMMIT
+# ============================================================================
+
+config_backup.json
+settings_backup.json
+migration_backup.sql
+
+# ============================================================================
+# FILES THAT SHOULD BE TRACKED
+# ============================================================================
+
+# DO TRACK THESE:
+# ✓ .env.example - template (WITHOUT secrets)
+# ✓ *.md files - documentation
+# ✓ *.py files - scripts
+# ✓ requirements.txt - dependencies
+# ✓ config.py - base configuration (NO SECRETS)
+# ✓ .gitignore - this file
+
+# ============================================================================

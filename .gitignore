@@ -1,0 +1,15 @@
+# Exclude generated credentials from the deployment folder
+deployment/azure_vm_info.json
+deployment/db_config.json
+deployment/installer_info.json
+deployment/orangehrm_upload.zip
+
+# Exclude node_modules and vendor (if you don't want to push them)
+# Note: Keep orangehrm-5.8.1/src/vendor if it's pre-packaged and you want to push it!
+**/node_modules/
+**/.git/
+
+# OS and IDE files
+.vscode/
+.DS_Store
+Thumbs.db

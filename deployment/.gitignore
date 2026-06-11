@@ -1,0 +1,14 @@
+# Azure deployment generated files containing passwords & IPs
+azure_vm_info.json
+db_config.json
+installer_info.json
+
+# Local Python temporary files
+__pycache__/
+*.pyc
+orangehrm_upload.zip
+
+# VS Code and OS files
+.vscode/
+.DS_Store
+Thumbs.db

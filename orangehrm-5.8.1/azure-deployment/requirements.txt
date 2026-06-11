@@ -1,0 +1,12 @@
+azure-identity==1.14.0
+azure-mgmt-resource==23.1.1
+azure-mgmt-compute==30.7.0
+azure-mgmt-storage==21.1.0
+azure-mgmt-web==7.1.0
+azure-mgmt-sql==4.1.0
+azure-mgmt-network==25.2.0
+azure-storage-blob==12.19.0
+python-dotenv==1.0.0
+requests==2.31.0
+paramiko==3.4.0
+pyyaml==6.0.1
